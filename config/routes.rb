@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  #-----------------------------------------------------------------------------
+  # Geojson services
+  #-----------------------------------------------------------------------------
+  namespace :geo_data do
+    get 'interest_points' => 'interest_points#interest_points'
+    get 'beach_walkway' => 'routes#beach_walkway'
+  end
 end
