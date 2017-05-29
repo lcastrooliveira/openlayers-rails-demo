@@ -1,0 +1,79 @@
+.map {
+  height: 600px;
+  width: 50%;
+  background-color: #b5d0d0;
+}
+
+.curtain {
+  display: none;
+  position: relative;
+  height: 600px;
+  width: 50%;
+  background-color: rgba(170,170,170,0.5);
+  top: -600px;
+  z-index: 1
+}
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -60px;
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    margin-top: -60px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.ol-zoom {
+  left: unset;
+  right: 8px;
+ }
+
+.layer-switcher {
+  position: absolute;
+  top: 1.0em;
+  right: unset;
+  left: 0.5em;
+  text-align: left;
+}
+
+
+
+.ol-touch .export-geojson {
+  top: 80px;
+}
+
+.export-geojson a {
+  display: block;
+  color: white;
+  font-size: 16px;
+  font-family: 'Lucida Grande',Verdana,Geneva,Lucida,Arial,Helvetica,sans-serif;
+  font-weight: bold;
+  margin: 1px;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 2px;
+  height: 22px;
+  width: 22px;
+  background: rgba(0,60,136,0.5);
+}
+
+.ol-touch .export-geojson a {
+  font-size: 20px;
+  height: 30px;
+  width: 30px;
+  line-height: 26px;
+}
+
+.export-geojson a:hover {
+  background: rgba(0,60,136,0.7);
+}
