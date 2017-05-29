@@ -12,4 +12,6 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require ol
+//= require ol3-layerswitcher
 //= require_tree .
