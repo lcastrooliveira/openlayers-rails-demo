@@ -7,4 +7,4 @@ $(document).ready ->
   mapping.addBeachWalkwayPoints()
   mapping.addBeachWalkway()
   mapping.addLayerSwitcher()
-  #mapping.addSelectionControls()
+  mapping.addSelectionControls()
