@@ -18,7 +18,9 @@ class @LayerFactory
     new ol.layer.Tile({
       title: title
       type: 'base'
-      source: new ol.source.OSM(),
+      source: new ol.source.Stamen({
+        layer: 'watercolor'
+      }),
       projection: projection,
       crossOrigin: crossOrigin
     })
