@@ -3,16 +3,16 @@ class @Mapping
   @styleCache: {}
 
   @iconTypes: {
-    'Flag':'information_ready.png',
-    'Safety' :'lodge_ready.png',
-    'Tourist Information' :'services_ready.png',
-    'Utilities' : 'scientific_ready.png',
-    'Food' : 'leizure_ready.png',
-    'Cultural' : 'church_ready.png',
-    'Monument': 'food_ready.png',
-    'Hospital': 'food_ready.png',
-    'Hotel': 'food_ready.png',
-    'View Spot': 'food_ready.png',
+    'Flag':'010-interface.png',
+    'Safety' :'009-shield.png',
+    'Tourist Information' :'008-suitcase.png',
+    'Utilities' : '007-hammer.png',
+    'Food' : '006-restaurant.png',
+    'Cultural' : '002-paint.png',
+    'Monument': '003-monument.png',
+    'Hospital': '004-medical.png',
+    'Hotel': '001-sleeping.png',
+    'View Spot': '005-watch.png',
   }
 
   constructor: (@element) ->
