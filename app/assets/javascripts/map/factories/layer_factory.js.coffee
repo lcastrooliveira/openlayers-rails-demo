@@ -30,7 +30,8 @@ class @LayerFactory
       type: 'base',
       title: title,
       source: new ol.source.BingMaps({
-        key: 'AoFmEDMiRIO08adM2WUEMCmQA3xwPo8v7Nrg2VKdYltL0qdqjQEYeIuszP4dsdlX',
+        # Create your key at https://www.bingmapsportal.com
+        key: bing_key
         imagerySet: imagerySet
       })
     })
