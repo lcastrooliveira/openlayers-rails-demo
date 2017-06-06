@@ -21,12 +21,16 @@ class @Mapping
     osmLayer = LayerFactory.createOSMTileLayer('Map (OSM)')
     bingMapsLayer = LayerFactory.createBingLayer('Satellite')
 
+
     center = ol.proj.transform([115.220433,-34.284727],'EPSG:4326','EPSG:3857')
     view = new ol.View({center: center, zoom: 12})
     @map = new ol.Map({target: @element.attr('id')})
     @map.addLayer(bingMapsLayer)
     @map.addLayer(osmLayer)
     @map.setView(view)
+
+    @popup = new ol.Overlay.Popup();
+    @map.addOverlay(@popup);
     @element.data('map', map)
 
   addLayerSwitcher: =>
@@ -39,7 +43,7 @@ class @Mapping
     return [styleFunction(feature,0.4)]
 
   selectedSytle = (feature) =>
-    return [styleFunction(feature,1.0)]
+    return [styleFunction(feature,0.6)]
 
   styleFunction = (feature,scale) =>
     point_type = feature.get('category')
@@ -69,7 +73,9 @@ class @Mapping
     selectedFeatures = selectInteraction.getFeatures()
     selectedFeatures.on('add', (event) =>
       feature = event.target.item(0)
-      console.log(feature.get('description'))
+      coordinates = feature.getGeometry().getCoordinates()
+      @popup.show(coordinates, '<div><h2>' + feature.get('name') + '</h2><p>' + feature.get('description') + '</p></div>')
+
     )
     @map.on('pointermove',(event) =>
       mouseCoordInPixels = [event.originalEvent.offsetX, event.originalEvent.offsetY]
