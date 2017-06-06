@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require ol
 //= require ol3-layerswitcher
+//= require ol3-popup
 //= require_tree .
