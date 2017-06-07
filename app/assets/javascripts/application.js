@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require jquery2
 //= require jquery_ujs
+//= require bootstrap-sprockets
 //= require turbolinks
 //= require ol
 //= require ol3-layerswitcher
