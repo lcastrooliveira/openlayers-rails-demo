@@ -23,14 +23,17 @@ class @Mapping
 
 
     center = ol.proj.transform([115.220433,-34.284727],'EPSG:4326','EPSG:3857')
-    view = new ol.View({center: center, zoom: 12})
-    @map = new ol.Map({target: @element.attr('id')})
+    view = new ol.View({center: center, zoom: 2})
+    @map = new ol.Map({
+      target: @element.attr('id'),
+      loadTilesWhileAnimating: true,
+    })
     @map.addLayer(bingMapsLayer)
     @map.addLayer(osmLayer)
     @map.setView(view)
 
-    @popup = new ol.Overlay.Popup();
-    @map.addOverlay(@popup);
+    @popup = new ol.Overlay.Popup()
+    @map.addOverlay(@popup)
     @element.data('map', map)
 
   addLayerSwitcher: =>
@@ -61,6 +64,13 @@ class @Mapping
 
   addBeachWalkwayPoints: =>
     setupPointLayers(@map)
+
+  doZoom: (factor) =>
+    @map.getView().animate({
+      zoom: @map.getView().getZoom() + 10,
+      duration: 5000,
+      easing: ol.easing.easeOut
+    })
 
   addSelectionControls: =>
     selectInteraction = new ol.interaction.Select({
