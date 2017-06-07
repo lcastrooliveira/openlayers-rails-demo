@@ -1,19 +1,66 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
-      <h1 class="text-center">Explore Western Wild Australia :)</h1>
+    <div class="col-md-6 col-sm-12 map-frame img-thumbnail">
+      <div class="">
+          <%= render partial: 'map/map' %>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6 col-sm-12">
-      <%= render partial: 'map/map' %>
-    </div>
-    <div class="col-md-6 col-sm-12">
-      Mussum Ipsum, cacilds vidis litro abertis. Delegadis gente finis, bibendum egestas augue arcu ut est. Paisis, filhis, espiritis santis. Quem num gosta di mim que vai caçá sua turmis! Mauris nec dolor in eros commodo tempor. Aenean aliquam molestie leo, vitae iaculis nisl.
-
-Copo furadis é disculpa de bebadis, arcu quam euismod magna. Quem manda na minha terra sou euzis! Detraxit consequat et quo num tendi nada. Aenean aliquam molestie leo, vitae iaculis nisl.
-
-Casamentiss faiz malandris se pirulitá. Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis. Si num tem leite então bota uma pinga aí cumpadi! Interagi no mé, cursus quis, vehicula ac nisi.
+    <div class="col-md-6 col-sm-12 information-block">
+      <h3>About this Demo</h3>
+      <p>Would you like to take this track in Western Australia ? Click on the
+        icons to know a little bit more about the track’s attractions. There are
+        some cool surprises :)
+       </p>
+       <p>
+         Don’t forget to use the menu on the right to filter the data displayed
+         or switch to satellite imagery.
+       </p>
+       <p>
+         This is a demonstration of my performed research when I was a software
+         developer for Adetur Cataratas e Caminhos. It shows how to link
+         geographical data from Postgis in a rails application and display the
+         information using Openlayers 4. THE TRACK AND POINTS USED ARE FICTITIOUS
+         DATA I’VE CREATED FOR DEMONSTRATION ONLY.
+       </p>
+       <h4>Technically speaking the flow works this way:</h4>
+       <ol>
+         <li>
+           A geometry is stored in a Postgres database with Postgis extension, along
+           with conventional tabular data
+         </li>
+         <li>
+           These records are linked to a rails application in the model layer
+           using active record
+         </li>
+         <li>
+           The geographic data is combined with tabular data, converted into
+           <b><a href="http://geojson.org/" target="_blank">geojson</a></b>
+           and served by "geo controllers" to the client
+         </li>
+         <li>
+           The Geojson is read as a vector layer data source by OpenLayers 4.
+           There's also some work to split each point category into a specific map
+           layer. Therefore the layer switcher can filter the interest points
+           through their types
+         </li>
+       </ol>
+       <h4>Really cool gems:</h4>
+       <ul>
+         <li>
+           <a href="https://github.com/rgeo/activerecord-postgis-adapter" target="_blank">activerecord-postgis-adapter</a>
+           – Allows Rails Active Record to
+           connect to a Postgis database
+         </li>
+         <li>
+           <a href="https://github.com/rgeo/rgeo-geojson" target="_blank">rgeo-geojson</a>
+            – Has methods to convert postgis geometry types into
+           geojson
+         </li>
+         <li>
+           <a href="https://github.com/yamldb/yaml_db" target="_blank">yaml_db</a>
+            – Really cool gem that helps to dump your database data as YML
+         </li>
+       </ul>
     </div>
   </div>
 </div>
