@@ -18,11 +18,15 @@
  @import "ol3-popup";
 
 body {
-   background-color: #b5d0d0;
+   background-color: #b9e8e8;
 }
 
 .information-block {
   font-size: 1.2em;
+}
+
+.information-title {
+  margin-top: 0;
 }
 
 .email {
