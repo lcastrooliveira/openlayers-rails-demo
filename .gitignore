@@ -6,7 +6,6 @@
 
 # Ignore bundler config.
 /.bundle
-app/assets/javascripts/map/factories/key_holder.js
 
 # Ignore all logfiles and tempfiles.
 /log/*
