@@ -19,33 +19,3 @@
   left: 0.5em;
   text-align: left;
 }
-
-.ol-touch .export-geojson {
-  top: 80px;
-}
-
-.export-geojson a {
-  display: block;
-  color: white;
-  font-size: 16px;
-  font-family: 'Lucida Grande',Verdana,Geneva,Lucida,Arial,Helvetica,sans-serif;
-  font-weight: bold;
-  margin: 1px;
-  text-decoration: none;
-  text-align: center;
-  border-radius: 2px;
-  height: 22px;
-  width: 22px;
-  background: rgba(0,60,136,0.5);
-}
-
-.ol-touch .export-geojson a {
-  font-size: 20px;
-  height: 30px;
-  width: 30px;
-  line-height: 26px;
-}
-
-.export-geojson a:hover {
-  background: rgba(0,60,136,0.7);
-}

@@ -20,9 +20,7 @@ class @Mapping
   runMap: =>
     osmLayer = LayerFactory.createOSMTileLayer('Map (OSM)')
     bingMapsLayer = LayerFactory.createBingLayer('Satellite')
-
-
-    center = ol.proj.transform([115.220433,-34.284727],'EPSG:4326','EPSG:3857')
+    center = ol.proj.transform([115.168260,-34.319526],'EPSG:4326','EPSG:3857')
     view = new ol.View({center: center, zoom: 2})
     @map = new ol.Map({
       target: @element.attr('id'),
@@ -63,14 +61,19 @@ class @Mapping
     @map.addLayer(layer)
 
   addBeachWalkwayPoints: =>
-    setupPointLayers(@map)
+    this.setupPointLayers(@map)
 
   doZoom: (factor) =>
     @map.getView().animate({
-      zoom: @map.getView().getZoom() + 10,
-      duration: 5000,
+      zoom: @map.getView().getZoom() + 12,
+      duration: 5500,
       easing: ol.easing.easeOut
     })
+
+  showFeaturePopUp: (feature) =>
+    console.log(feature)
+    coordinates = feature.getGeometry().getCoordinates()
+    @popup.show(coordinates, '<div><h2>' + feature.get('name') + '</h2><p>' + feature.get('description') + '</p></div>')
 
   addSelectionControls: =>
     selectInteraction = new ol.interaction.Select({
@@ -79,15 +82,14 @@ class @Mapping
           return layer.get('selectable') == true
         style: selectedSytle
     })
+
     @map.addInteraction(selectInteraction)
     selectedFeatures = selectInteraction.getFeatures()
     selectedFeatures.on('add', (event) =>
       feature = event.target.item(0)
-      coordinates = feature.getGeometry().getCoordinates()
-      @popup.show(coordinates, '<div><h2>' + feature.get('name') + '</h2><p>' + feature.get('description') + '</p></div>')
-
+      this.showFeaturePopUp(feature)
     )
-    @map.on('pointermove',(event) =>
+    @map.on('pointermove', (event) =>
       mouseCoordInPixels = [event.originalEvent.offsetX, event.originalEvent.offsetY]
       hit = @map.forEachFeatureAtPixel(mouseCoordInPixels,(feature,layer) =>
         return true
@@ -98,19 +100,24 @@ class @Mapping
         @element.css('cursor','')
     )
 
-  setupPointLayers = (map) =>
+  setupPointLayers: =>
     $.ajax({
       dataType: "json",
       url: "/geo_data/interest_points",
       success: (data) =>
         features = new ol.format.GeoJSON().readFeatures(data, {featureProjection: 'EPSG:3857'})
+        starting_point = null
         features.forEach((feature)=>
           point_type = feature.get('category')
-          layer = thisLayerExists(map,point_type)
+          point_name = feature.get('name')
+          if(!starting_point? && point_name = 'Beginning of the trail')
+            starting_point = feature
+          layer = this.thisLayerExists(point_type)
           if(layer)
             layer.getSource().addFeature(feature)
           else
             layer = new ol.layer.Vector({
+                id: point_type
                 name: point_type
                 title: point_type,
                 selectable: true,
@@ -119,14 +126,14 @@ class @Mapping
                 }),
                 style: iconStyle
             })
-            map.addLayer(layer)
-        )
+            @map.addLayer(layer))
+        this.showFeaturePopUp(starting_point)
       error: (e)->
         console.log(e)
     })
 
-  thisLayerExists = (map,layer_name) =>
-    layers = map.getLayers().getArray()
+  thisLayerExists: (layer_name) =>
+    layers = @map.getLayers().getArray()
     layer_ = false
     found = layers.some((layer)->
       if(layer.get('name') == layer_name)
