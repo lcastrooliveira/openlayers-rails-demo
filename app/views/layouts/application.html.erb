@@ -6,7 +6,9 @@
      <meta name="author" content="Lucas de Castro Oliveira">
     <title>GeoDemo</title>
     <%= csrf_meta_tags %>
-
+    <%= javascript_tag do %>
+      window.bing_key = '<%= ENV['BING'] %>';
+    <% end %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
