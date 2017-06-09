@@ -18,5 +18,3 @@ production:
   database: walkways_production
   username: geo_demo
   password: <%= ENV['GEO_DEMO_DATABASE_PASSWORD'] %>
-  postgis_extension: postgis
-  schema_search_path: public,postgis
