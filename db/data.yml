@@ -34729,7 +34729,7 @@ v_interest_points:
     - 01010000E0E61000006886774110CC5C40AA8E67B2A82841C000000000000000000000000000000000
   - - 13
     - Police Station
-    - FYI: Marijuana is not legal here
+    - 'FYI: Marijuana is not legal here'
     - Safety
     - 01010000E0E6100000216986D9DDCA5C4003F8A4A4072341C000000000000000000000000000000000
   - - 14
@@ -34764,7 +34764,7 @@ v_interest_points:
     - 01010000E0E6100000A155FC1846D15C40E5F97006D12141C000000000000000000000000000000000
   - - 20
     - 5 metre Sand castle
-    - Trust me: It will be sitting here waiting for you to see
+    - 'Trust me: It will be sitting here waiting for you to see'
     - View Spot
     - 01010000E0E6100000007A2F40EFD15C4005F7FC8C6E2741C000000000000000000000000000000000
   - - 21
