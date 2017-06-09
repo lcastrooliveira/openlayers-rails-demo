@@ -18,3 +18,4 @@ production:
   database: walkways_production
   username: geo_demo
   password: <%= ENV['GEO_DEMO_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'].sub(/^postgres/, "postgis") %>
